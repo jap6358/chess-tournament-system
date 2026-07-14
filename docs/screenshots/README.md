@@ -1,10 +1,13 @@
-# Screenshots
+## Screenshots
 
-Add screenshots here after running the app locally (`npm run dev`), for example:
+### Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
 
-- `dashboard.png` — the main dashboard with stat cards and charts
-- `players.png` — the players management table
-- `tournament-detail.png` — registration and match generation for a tournament
-- `rankings.png` — the rankings board with gold/silver/bronze medals
+### Player Management
+![Players](docs/screenshots/players.png)
 
-These are referenced from the root `README.md`.
+### Tournament Details
+![Tournament Details](docs/screenshots/tournament-detail.png)
+
+### Rankings
+![Rankings](docs/screenshots/rankings.png)
