@@ -252,7 +252,7 @@ All write endpoints validate input server-side (`src/lib/server/validation.ts`) 
 
 ## Screenshots
 
-> Replace these placeholders with real screenshots once the app is running locally.
+
 
 - `docs/screenshots/dashboard.png` — Dashboard overview
 - `docs/screenshots/players.png` — Player management table
