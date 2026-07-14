@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		@apply scroll-smooth;
+	}
+	body {
+		@apply font-sans antialiased;
+	}
+	h1, h2, h3, h4 {
+		@apply font-display;
+	}
+	:focus-visible {
+		@apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-ivory-50 dark:ring-offset-ebony-900;
+	}
+	::selection {
+		@apply bg-gold-300/60;
+	}
+}
+
+@layer components {
+	.surface {
+		@apply bg-white dark:bg-ebony-800 border border-ebony-100 dark:border-ebony-700 rounded-2xl shadow-card;
+	}
+
+	.stat-figure {
+		@apply font-mono tabular-nums;
+	}
+
+	.sidebar-link {
+		@apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-ebony-400 dark:text-ivory-300 transition-colors hover:bg-ebony-800/5 hover:text-ebony-900 dark:hover:bg-ivory-100/5 dark:hover:text-ivory-50;
+	}
+
+	.sidebar-link.active {
+		@apply bg-ebony-900 text-ivory-50 dark:bg-gold-500/15 dark:text-gold-300;
+	}
+
+	.btn {
+		@apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}

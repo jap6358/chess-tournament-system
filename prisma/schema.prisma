@@ -1,0 +1,116 @@
+// Chess Tournament Management System — Prisma Schema
+// Run `npx prisma migrate dev` to apply this schema to your PostgreSQL database.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum TournamentStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+}
+
+enum MatchStatus {
+  SCHEDULED
+  COMPLETED
+  BYE
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  fullName     String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Player {
+  id          String   @id @default(cuid())
+  fullName    String
+  email       String   @unique
+  country     String
+  age         Int
+  gender      Gender   @default(OTHER)
+  chessRating Int      @default(1200)
+  phone       String?
+  wins        Int      @default(0)
+  losses      Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tournaments      TournamentPlayer[]
+  matchesAsPlayer1 Match[]            @relation("PlayerOneMatches")
+  matchesAsPlayer2 Match[]            @relation("PlayerTwoMatches")
+  matchesWon       Match[]            @relation("WinnerMatches")
+
+  @@index([chessRating])
+  @@map("players")
+}
+
+model Tournament {
+  id             String            @id @default(cuid())
+  name           String
+  description    String?
+  location       String
+  date           DateTime
+  status         TournamentStatus  @default(UPCOMING)
+  maximumPlayers Int               @default(16)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  players TournamentPlayer[]
+  matches Match[]
+
+  @@index([status])
+  @@map("tournaments")
+}
+
+// Join table between Player <-> Tournament (registration)
+model TournamentPlayer {
+  id           String   @id @default(cuid())
+  tournamentId String
+  playerId     String
+  registeredAt DateTime @default(now())
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  player     Player     @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([tournamentId, playerId], name: "tournamentId_playerId")
+  @@map("tournament_players")
+}
+
+model Match {
+  id           String      @id @default(cuid())
+  tournamentId String
+  round        Int         @default(1)
+  playerOneId  String
+  playerTwoId  String?
+  winnerId     String?
+  matchTime    DateTime    @default(now())
+  status       MatchStatus @default(SCHEDULED)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  tournament Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  playerOne  Player     @relation("PlayerOneMatches", fields: [playerOneId], references: [id], onDelete: Cascade)
+  playerTwo  Player?    @relation("PlayerTwoMatches", fields: [playerTwoId], references: [id], onDelete: Cascade)
+  winner     Player?    @relation("WinnerMatches", fields: [winnerId], references: [id], onDelete: SetNull)
+
+  @@index([tournamentId, round])
+  @@map("matches")
+}
