@@ -19,8 +19,10 @@ Built with **SvelteKit**, **TypeScript**, **Prisma ORM**, **PostgreSQL**, and **
 9. [Folder Structure](#folder-structure)
 10. [API Documentation](#api-documentation)
 11. [Deployment](#deployment)
-12. [Screenshots](#screenshots)
-13. [Future Improvements](#future-improvements)
+12. Demo Video
+13. Screenshots
+14. Assignment Requirements Mapping
+15. Future Improvements
 
 ---
 
@@ -50,6 +52,7 @@ Chessmaster gives a tournament administrator everything needed to run an event f
 - **Rankings** — highest wins → higher rating → alphabetical tie-breaks, with gold/silver/bronze medals, both globally and per-tournament.
 - **Tournament Statistics** — total/completed/remaining matches, average rating, highest/lowest rated player, tournament champion.
 - **Modern, Responsive UI** — sidebar + navbar shell, light/dark theme, cards, tables, badges, modals, confirmation dialogs, pagination, toasts, skeleton/empty states, custom 404/500 pages.
+- **Top 3 Rankings** — Displays Gold (1st Place), Silver (2nd Place), and Bronze (3rd Place) medal positions based on total wins, chess rating, and alphabetical tie-breakers.
 
 ---
 
@@ -69,8 +72,10 @@ Chessmaster gives a tournament administrator everything needed to run an event f
 ## Installation
 
 ```bash
-git clone <your-repo-url> chessmaster
-cd chessmaster
+git clone https://github.com/jap6358/chess-tournament-system.git
+
+cd chess-tournament-system
+
 npm install
 ```
 
@@ -250,14 +255,51 @@ All write endpoints validate input server-side (`src/lib/server/validation.ts`) 
 
 ---
 
+## Demo Video
+
+Watch the complete project demonstration here:
+
+[Chess Tournament Management System Demo Video](https://drive.google.com/file/d/1z6PoFTbseRxR22kEEONNxCu9RZPCFS1p/view?usp=sharing)
+
+---
+
 ## Screenshots
 
 
+### Dashboard
 
-- `docs/screenshots/dashboard.png` — Dashboard overview
-- `docs/screenshots/players.png` — Player management table
-- `docs/screenshots/tournament-detail.png` — Registration & match generation
-- `docs/screenshots/rankings.png` — Rankings with medals
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Players Management
+
+![Players](docs/screenshots/players.png)
+
+### Tournament Details
+
+![Tournament](docs/screenshots/tournament-detail.png)
+
+### Rankings
+
+![Rankings](docs/screenshots/rankings.png)
+
+---
+
+## Assignment Requirements Mapping
+
+| Requirement | Status |
+|------------|--------|
+| Player CRUD | Completed |
+| Tournament CRUD | Completed |
+| Tournament Registration | Completed |
+| Random Match Generation | Completed |
+| Random Winner Selection | Completed |
+| Match History | Completed |
+| Top 3 Rankings (1st, 2nd, 3rd) | Completed |
+| PostgreSQL Database Integration | Completed |
+| Responsive UI | Completed |
+| Admin Authentication | Completed |
+| Demo Video | Completed |
+| GitHub Repository | Completed |
 
 ---
 
