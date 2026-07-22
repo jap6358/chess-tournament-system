@@ -18,11 +18,12 @@ Built with **SvelteKit**, **TypeScript**, **Prisma ORM**, **PostgreSQL**, and **
 8. [Running the Project](#running-the-project)
 9. [Folder Structure](#folder-structure)
 10. [API Documentation](#api-documentation)
-11. [Deployment](#deployment)
-12. Demo Video
-13. Screenshots
-14. Assignment Requirements Mapping
-15. Future Improvements
+11. [Demo Video](#demo-video)
+12. [Deployment (Optional)](#deployment-optional)
+13. [Screenshots](#screenshots)
+14. [Assignment Requirements Mapping](#assignment-requirements-mapping)
+15. [Future Improvements](#future-improvements)
+16. [Assignment Compliance](#assignment-compliance)
 
 ---
 
@@ -238,28 +239,45 @@ All write endpoints validate input server-side (`src/lib/server/validation.ts`) 
 
 ---
 
-## Deployment
 
-### Vercel + Neon
-
-1. Push the repository to GitHub/GitLab/Bitbucket.
-2. Create a Neon (or Supabase) PostgreSQL database and copy its connection string.
-3. In Vercel, import the repository and set these Environment Variables: `DATABASE_URL`, `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `APP_NAME`.
-4. Build command: `npm run build` (the project already uses `@sveltejs/adapter-vercel`).
-5. After the first deploy, run migrations against the production database once:
-   ```bash
-   DATABASE_URL="<your-prod-url>" npx prisma migrate deploy
-   DATABASE_URL="<your-prod-url>" npm run prisma:seed   # optional, for demo data
-   ```
-6. Visit your Vercel URL and log in with the seeded admin credentials.
-
----
 
 ## Demo Video
 
 Watch the complete project demonstration here:
 
 [Chess Tournament Management System Demo Video](https://drive.google.com/file/d/1z6PoFTbseRxR22kEEONNxCu9RZPCFS1p/view?usp=sharing)
+
+
+---
+
+## Deployment (Optional)
+
+This project has not been deployed publicly as part of the assignment submission. The application is ready for deployment using Vercel and PostgreSQL services such as Neon or Supabase.
+
+### Vercel + Neon
+
+1. Push the repository to GitHub.
+2. Create a Neon PostgreSQL database.
+3. Configure the required environment variables.
+4. Build the project:
+
+```bash
+npm run build
+```
+
+5. Apply migrations:
+
+```bash
+npx prisma migrate deploy
+```
+
+6. (Optional) Seed the database:
+
+```bash
+npm run prisma:seed
+```
+
+After deployment, the application can be accessed through the generated Vercel URL.
 
 ---
 
@@ -314,7 +332,7 @@ Watch the complete project demonstration here:
 
 ---
 
-Built as a complete, end-to-end reference implementation of a chess tournament manager. Contributions and adaptations welcome.
+Built as an end-to-end Chess Tournament Management System demonstrating player management, tournament administration, random match generation, ranking computation, and PostgreSQL integration using SvelteKit and TypeScript.
 
 ## Assignment Compliance
 
