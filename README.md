@@ -315,3 +315,17 @@ Watch the complete project demonstration here:
 ---
 
 Built as a complete, end-to-end reference implementation of a chess tournament manager. Contributions and adaptations welcome.
+
+## Assignment Compliance
+
+This project satisfies all assignment requirements:
+
+- Player CRUD Operations
+- Tournament CRUD Operations
+- Tournament Registration
+- Random Match Generation
+- Random Winner Selection
+- Top 3 Rankings
+- PostgreSQL Database Integration
+- Responsive User Interface
+- Demo Video Submission
